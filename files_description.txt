@@ -1,0 +1,7 @@
+.env.dev - private file with environment variables
+.env.dev.pub - public file, dont using in project
+docker-compose.yml - docker compose file
+Dockerfile - docker file
+entrypoint.sh - project launch file
+req.txt - result pip freeze
+Task_ru.pdf - order file sent by customer
