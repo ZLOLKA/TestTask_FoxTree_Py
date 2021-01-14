@@ -1,0 +1,37 @@
+{% load static %}
+{% spaceless %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ru">
+    <head>
+        <meta name="viewport">
+        <title>{% block Title %}{% endblock %}</title>
+        {% block Style %}
+        {% endblock %}
+        {% block Script %}
+        {% endblock %}
+    </head>
+
+    <body>
+        <div class="Hat">
+            <div class="Anchors">
+                {% block Anchors %}
+                {% endblock %}
+            </div>
+            <div class="Link">
+                {% block Link %}
+                {% endblock %}
+            </div>
+            {% block Hat %}
+            {% endblock %}
+        </div>
+        <div class="Main">
+            {% block Main %}
+            {% endblock %}
+        </div>
+        <div id="Basement">
+            {% block Basement %}
+            {% endblock %}
+        </div>
+    </body>
+</html>
+{% endspaceless %}
