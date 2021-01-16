@@ -5,6 +5,13 @@
 {% endblock %}
 
 {% block Main %}
+    {% if user.is_authenticated %}
+        <p>Hi {{ user.username }}</p>
+        <p><a href="{% url 'logout' %}">Log Out</a></p>
+    {% else %}
+        <p><a href="{% url 'registration' %}">To Registration</a></p>
+        <p><a href="{% url 'login' %}">Log In</a></p>
+    {% endif %}
     test test test test test test test test test test test test test test test test test test test test test test test
     test test test test test test test test test test test test test test test test test test test test test test test
     test test test test test test test test test test test test test test test test test test test test test test test

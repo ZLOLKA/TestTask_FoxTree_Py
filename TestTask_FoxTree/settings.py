@@ -32,6 +32,7 @@ ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 # Application definition
 
 INSTALLED_APPS = [
+    "account",
     "aggregator",
     'django.contrib.admin',
     'django.contrib.auth',
@@ -97,12 +98,24 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "OPTIONS": {
+            "min_length": 8,
+        }
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+    {
+        "NAME": "TestTask_FoxTree.password_validators.TwoNumbersValidator"
+    },
+    {
+        "NAME": "TestTask_FoxTree.password_validators.SpecialCharValidator"
+    },
+    {
+        "NAME": "TestTask_FoxTree.password_validators.TwoLatinValidator"
     },
 ]
 
@@ -125,3 +138,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+LOGIN_REDIRECT_URL = '/home'
+LOGOUT_REDIRECT_URL = '/home'
