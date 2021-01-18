@@ -20,6 +20,6 @@ urlpatterns = [
     url('admin/', admin.site.urls),
     url(r"^home/", include("aggregator.urls")),
     url(r"^Home/", include("aggregator.urls")),
-    url(r"^account/", include("account.urls")),
+    url(r"^accounts/", include("accounts.urls")),
     url(r"^", include("aggregator.urls")),
 ]
