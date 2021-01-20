@@ -12,7 +12,24 @@
         <p><a href="{% url 'registration' %}">To Registration</a></p>
         <p><a href="{% url 'login' %}">Log In</a></p>
     {% endif %}
-    test test test test test test test test test test test test test test test test test test test test test test test
-    test test test test test test test test test test test test test test test test test test test test test test test
-    test test test test test test test test test test test test test test test test test test test test test test test
+    {% for rate in rates %}
+        <p>------------------------------------------------------------------------------------------</p>
+        <p>{{ rate.date }}</p>
+        <p>{{ rate.nbrb_EUR }}</p>
+        <p>{{ rate.nbrb_USD }}</p>
+        <p>{{ rate.nbrb_RUB }}</p>
+        <p>{{ rate.alfa_EUR_sell }}</p>
+        <p>{{ rate.alfa_EUR_buy  }}</p>
+        <p>{{ rate.alfa_USD_sell }}</p>
+        <p>{{ rate.alfa_USD_buy  }}</p>
+        <p>{{ rate.alfa_RUB_sell }}</p>
+        <p>{{ rate.alfa_RUB_buy  }}</p>
+        <p>{{ rate.belarus_EUR_sell }}</p>
+        <p>{{ rate.belarus_EUR_buy  }}</p>
+        <p>{{ rate.belarus_USD_sell }}</p>
+        <p>{{ rate.belarus_USD_buy  }}</p>
+        <p>{{ rate.belarus_RUB_sell }}</p>
+        <p>{{ rate.belarus_RUB_buy  }}</p>
+        <p>------------------------------------------------------------------------------------------</p>
+    {% endfor %}
 {% endblock %}

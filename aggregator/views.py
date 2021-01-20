@@ -1,5 +1,11 @@
 from django.shortcuts import render
+from .models import BankRate
+
 
 # Create your views here.
 def home_view(request):
-    return render(request, "Home.html")
+    rates = BankRate.objects.all()
+    context = {
+        "rates": rates,
+    }
+    return render(request, "Home.html", context)

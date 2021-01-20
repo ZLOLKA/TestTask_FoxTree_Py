@@ -16,6 +16,9 @@ done
 #python manage.py collectstatic --noinput
 
 >&2 echo "Make migrations"
+python manage.py makemigrations
+
+>&2 echo "Migration"
 python manage.py migrate
 
 >&2 echo "Create super user"
