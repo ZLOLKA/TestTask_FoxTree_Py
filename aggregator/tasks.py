@@ -13,7 +13,7 @@ class Error:
 
 
 @app.task
-def get_exchange_rates():
+def get_exchange_rates(periodic=True):
     # Banking servers URLs
     nbrb = "https://www.nbrb.by/api/exrates/rates?periodicity=0"
     belarusbank = "https://belarusbank.by/api/kursExchange?city=Минск"
@@ -59,8 +59,12 @@ def get_exchange_rates():
                 kwargs[s+"sell"] = data["sellRate"]
                 kwargs[s+"buy"] = data["buyRate"]
 
-    data = BankRate(date=datetime.now(), **kwargs)
-    data.save()
+    if periodic:
+        data = BankRate(date=datetime.now(), **kwargs)
+        data.save()
+    else:
+        kwargs.update({"date": datetime.now()})
+        return kwargs
 
     # Error output
     if error_list:

@@ -8,28 +8,43 @@
     {% if user.is_authenticated %}
         <p>Hi {{ user.username }}</p>
         <p><a href="{% url 'logout' %}">Log Out</a></p>
+        {% if all %}
+            <p><a href="{% url 'home' %}?now=True">Current Rates</a></p>
+        {% else %}
+            <p><a href="{% url 'home' %}">All</a></p>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <p><label for="from_date">From date: </label>
+                <input id="from_date" name="from_date" type="date"> If empty then all entries
+            </p>
+            <p><label for="to_date">To date: </label>
+                <input id="to_date" name="to_date" type="date"> If empty then on a certain date otherwise on an interval
+            </p>
+            <p><button type="submit">OK</button></p>
+        </form>
     {% else %}
         <p><a href="{% url 'registration' %}">To Registration</a></p>
         <p><a href="{% url 'login' %}">Log In</a></p>
     {% endif %}
     {% for rate in rates %}
-        <p>------------------------------------------------------------------------------------------</p>
-        <p>{{ rate.date }}</p>
-        <p>{{ rate.nbrb_EUR }}</p>
-        <p>{{ rate.nbrb_USD }}</p>
-        <p>{{ rate.nbrb_RUB }}</p>
-        <p>{{ rate.alfa_EUR_sell }}</p>
-        <p>{{ rate.alfa_EUR_buy  }}</p>
-        <p>{{ rate.alfa_USD_sell }}</p>
-        <p>{{ rate.alfa_USD_buy  }}</p>
-        <p>{{ rate.alfa_RUB_sell }}</p>
-        <p>{{ rate.alfa_RUB_buy  }}</p>
-        <p>{{ rate.belarus_EUR_sell }}</p>
-        <p>{{ rate.belarus_EUR_buy  }}</p>
-        <p>{{ rate.belarus_USD_sell }}</p>
-        <p>{{ rate.belarus_USD_buy  }}</p>
-        <p>{{ rate.belarus_RUB_sell }}</p>
-        <p>{{ rate.belarus_RUB_buy  }}</p>
-        <p>------------------------------------------------------------------------------------------</p>
+        <p>----------------------------------------</p>
+        <p>Date = {{ rate.date }}</p>
+        <p>nbrb_EUR = {{ rate.nbrb_EUR }}</p>
+        <p>nbrb_USD = {{ rate.nbrb_USD }}</p>
+        <p>nbrb_RUB = {{ rate.nbrb_RUB }}</p>
+        <p>alfa_EUR_sell = {{ rate.alfa_EUR_sell }}</p>
+        <p>alfa_EUR_buy  = {{ rate.alfa_EUR_buy  }}</p>
+        <p>alfa_USD_sell = {{ rate.alfa_USD_sell }}</p>
+        <p>alfa_USD_buy  = {{ rate.alfa_USD_buy  }}</p>
+        <p>alfa_RUB_sell = {{ rate.alfa_RUB_sell }}</p>
+        <p>alfa_RUB_buy  = {{ rate.alfa_RUB_buy  }}</p>
+        <p>belarus_EUR_sell = {{ rate.belarus_EUR_sell }}</p>
+        <p>belarus_EUR_buy  = {{ rate.belarus_EUR_buy  }}</p>
+        <p>belarus_USD_sell = {{ rate.belarus_USD_sell }}</p>
+        <p>belarus_USD_buy  = {{ rate.belarus_USD_buy  }}</p>
+        <p>belarus_RUB_sell = {{ rate.belarus_RUB_sell }}</p>
+        <p>belarus_RUB_buy  = {{ rate.belarus_RUB_buy  }}</p>
+        <p>----------------------------------------</p>
     {% endfor %}
 {% endblock %}
